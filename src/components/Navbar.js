@@ -10,8 +10,17 @@ function Navbar() {
         </NavLink>
       </div>
       <div>
-        <NavLink to="/">
-          Home
+        <NavLink to="/character/1">
+          Character
+        </NavLink>
+        <NavLink className="ml-2" to="/location/1">
+          Locations
+        </NavLink>
+        <NavLink className="ml-2" to="/episode/1">
+          Episode
+        </NavLink>
+        <NavLink className="ml-2" to="/favorites">
+          Favorites
         </NavLink>
       </div>
       <div className="px-3">
