@@ -8,7 +8,7 @@ function CharacterItem({ character, deleteFavoriteFn }) {
   if (character) {
     return (
       <section>
-        <div className="md:flex md:-mx-4">
+        <div>
           <div className="w-full mb-2 md:w-1/2 md:mx-4 border rounded shadow-sm">
             <img className="rounded" src={character.image} alt="text" />
             <div className="px-4 py-4">
