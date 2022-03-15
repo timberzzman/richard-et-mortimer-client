@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import CharacterItem from '../components/Home/CharacterItem';
 import { getCharactersByID } from '../services/characterService';
 import { deleteFavorite, getFavorites } from '../services/favoritesService';
 
@@ -11,26 +12,40 @@ function Favorites() {
       const localFavorites = getFavorites();
       setFavorites(localFavorites);
       const characterids = [];
-      getFavorites().forEach((favorite) => {
-        switch (favorite.type) {
-          case 'character':
-            characterids.push(favorite.id);
-            break;
-          default:
-            break;
-        }
-      });
-      const fetchedCharacters = await getCharactersByID(characterids);
-      setCharacters(fetchedCharacters);
+      if (localFavorites) {
+        localFavorites.forEach((favorite) => {
+          switch (favorite.type) {
+            case 'character':
+              characterids.push(favorite.id);
+              break;
+            default:
+              break;
+          }
+        });
+        const fetchedCharacters = await getCharactersByID(characterids);
+        setCharacters(fetchedCharacters);
+      }
     };
 
     getFavoritesDatas();
   }, []);
 
-  function deleteLocalFavorite(favoriteType, favoriteID) {
+  const deleteLocalFavorite = (favoriteType, favoriteID) => {
     deleteFavorite(favoriteType, favoriteID);
-  }
+    let newFavorite = favorites;
+    newFavorite = newFavorite.filter(
+      (favorite) => favorite.id !== favoriteID || favorite.type !== favoriteType,
+    );
+    setFavorites(newFavorite);
+  };
 
+  if (!favorites) {
+    return (
+      <div>
+        <p>There is no favorites</p>
+      </div>
+    );
+  }
   return (
     <section>
       {
@@ -42,7 +57,10 @@ function Favorites() {
               );
               return (
                 <div key={`${favorite.type}-${favorite.id}`}>
-                  <p>{displayedCharacter.name}</p>
+                  <CharacterItem
+                    character={displayedCharacter}
+                    deleteFavoriteFn={deleteLocalFavorite}
+                  />
                 </div>
               );
             }

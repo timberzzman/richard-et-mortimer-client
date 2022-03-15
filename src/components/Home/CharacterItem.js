@@ -2,7 +2,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function CharacterItem({ character }) {
+function CharacterItem({ character, deleteFavoriteFn }) {
   const navigate = useNavigate();
 
   if (character) {
@@ -32,6 +32,9 @@ function CharacterItem({ character }) {
                   Posted by
                   <span className="text-red-400">Admin</span>
                 </div>
+                <button type="button" onClick={() => deleteFavoriteFn('character', character.id)}>
+                  Delete favorite
+                </button>
               </div>
             </div>
           </div>
