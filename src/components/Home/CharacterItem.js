@@ -9,19 +9,19 @@ function CharacterItem({ character, deleteFavoriteFn }) {
     return (
       <section>
         <div>
-          <div className="w-full mb-2 md:w-1/2 md:mx-4 border rounded shadow-sm">
+          <div className="w-full mb-2 md:w-1/2 md:mx-4 border dark:border-gray-800 rounded shadow-sm bg-gray-200 dark:bg-gray-800">
             <img className="rounded" src={character.image} alt="text" />
             <div className="px-4 py-4">
               <div>
                 <button
                   type="button"
                   onClick={() => navigate(`character/${character.id}`)}
-                  className="font-semibold leading-tight text-2xl text-gray-800 hover:text-gray-800"
+                  className="font-semibold leading-tight text-2xl text-black dark:text-white hover:text-gray-800"
                 >
                   {character.name}
                 </button>
               </div>
-              <hr className="border-gray-200 my-1 border-bottom-none" />
+              <hr className="border-gray-600 dark:border-gray-800 my-1 border-bottom-none" />
               <p className="text-gray-900">
                 Bootstrap card example using tailwind css with horizontal line below card title to
                 distinguish design.
