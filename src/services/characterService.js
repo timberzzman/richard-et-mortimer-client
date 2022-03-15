@@ -1,7 +1,7 @@
 import { request, gql } from 'graphql-request';
 
 const countQuery = gql`
-{
+query charactersCount {
   characters {
     info {
       count

@@ -2,23 +2,22 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function CharacterItem({ character, deleteFavoriteFn }) {
+function EpisodeItem({ episode, deleteFavoriteFn }) {
   const navigate = useNavigate();
 
-  if (character) {
+  if (episode) {
     return (
       <section>
         <div>
           <div className="w-full mb-2 md:w-1/2 md:mx-4 border dark:border-gray-800 rounded shadow-sm bg-gray-200 dark:bg-gray-800">
-            <img className="rounded" src={character.image} alt="text" />
             <div className="px-4 py-4">
               <div>
                 <button
                   type="button"
-                  onClick={() => navigate(`character/${character.id}`)}
+                  onClick={() => navigate(`episode/${episode.id}`)}
                   className="font-semibold leading-tight text-2xl text-black dark:text-white hover:text-gray-800"
                 >
-                  {character.name}
+                  {episode.name}
                 </button>
               </div>
               <hr className="border-gray-600 dark:border-gray-800 my-1 border-bottom-none" />
@@ -32,7 +31,7 @@ function CharacterItem({ character, deleteFavoriteFn }) {
                   Posted by
                   <span className="text-red-400">Admin</span>
                 </div>
-                <button type="button" onClick={() => deleteFavoriteFn('character', character.id)}>
+                <button type="button" onClick={() => deleteFavoriteFn('episode', episode.id)}>
                   Delete favorite
                 </button>
               </div>
@@ -45,4 +44,4 @@ function CharacterItem({ character, deleteFavoriteFn }) {
   return null;
 }
 
-export default CharacterItem;
+export default EpisodeItem;
