@@ -47,7 +47,7 @@ function Favorites() {
     );
   }
   return (
-    <section>
+    <section className="mt-3">
       {
         favorites.map((favorite) => {
           if (favorite.type === 'character') {

@@ -28,8 +28,8 @@ function Home() {
   }, []);
 
   return (
-    <section>
-      <div className="my-3">
+    <section className="mt-3">
+      <div className="mb-3">
         <button type="button" className="text-md text-black p-3 rounded-md bg-gray-200 dark:text-white dark:bg-gray-800" onClick={() => getRandomCharacter()}>Character</button>
       </div>
       <CharacterItem character={currentCharacter} />
