@@ -34,14 +34,9 @@ function CharacterItem({ character, deleteFavoriteFn }) {
                 Bootstrap card example using tailwind css with horizontal line below card title to
                 distinguish design.
               </p>
-              <div className="flex text-gray-700 text-sm">
-                <div className="pr-3">May 6, 2020</div>
-                <div>
-                  Posted by
-                  <span className="text-red-400">Admin</span>
-                </div>
+              <div className="flex text-gray-700 text-md justify-end mt-2">
                 <button
-                  className="px-3 bg-green-500 rounded text-white"
+                  className={favorite ? 'py-2 px-3 rounded text-white bg-red-500' : 'py-2 px-3 rounded text-white bg-green-500'}
                   type="button"
                   onClick={() => {
                     if (!favorite) addFavorite('character', character.id);
