@@ -1,9 +1,17 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { addFavorite, deleteFavorite, isFavorite } from '../../services/favoritesService';
 
 function EpisodeItem({ episode, deleteFavoriteFn }) {
   const navigate = useNavigate();
+  const [favorite, setFavorite] = useState(false);
+
+  useEffect(() => {
+    if (episode) {
+      setFavorite(isFavorite('character', episode.id));
+    }
+  }, [episode]);
 
   if (episode) {
     return (
@@ -31,8 +39,20 @@ function EpisodeItem({ episode, deleteFavoriteFn }) {
                   Posted by
                   <span className="text-red-400">Admin</span>
                 </div>
-                <button type="button" onClick={() => deleteFavoriteFn('episode', episode.id)}>
-                  Delete favorite
+                <button
+                  className="px-3 bg-green-500 rounded text-white"
+                  type="button"
+                  onClick={() => {
+                    if (!favorite) addFavorite('episode', episode.id);
+                    else if (deleteFavoriteFn) {
+                      deleteFavoriteFn('episode', episode.id);
+                    } else {
+                      deleteFavorite('episode', episode.id);
+                    }
+                    setFavorite(!favorite);
+                  }}
+                >
+                  { favorite ? 'Delete from favorites' : 'Add to favorites' }
                 </button>
               </div>
             </div>
