@@ -1,7 +1,7 @@
 export function deleteFavorite(favoriteType, favoriteID) {
   let favorites = JSON.parse(localStorage.getItem('favorites'));
   favorites = favorites.filter(
-    (element) => element.id !== favoriteID && element.type === favoriteType,
+    (element) => element.type !== favoriteType || element.id !== favoriteID,
   );
   if (!favorites.length) {
     localStorage.removeItem('favorites');

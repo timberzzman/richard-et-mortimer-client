@@ -37,7 +37,7 @@ function Home() {
     setCurrentEpisode(null);
     setCurrentLocation(null);
     const location = await getLocation(getRandomInt(count.locations));
-    setCurrentEpisode(location);
+    setCurrentLocation(location);
   }
 
   useEffect(() => {
