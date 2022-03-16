@@ -1,10 +1,12 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { addFavorite, deleteFavorite, isFavorite } from '../../services/favoritesService';
 
 function LocationItem({ location, deleteFavoriteFn }) {
   const navigate = useNavigate();
+  const [t] = useTranslation();
   const [favorite, setFavorite] = useState(false);
 
   useEffect(() => {
@@ -28,11 +30,11 @@ function LocationItem({ location, deleteFavoriteFn }) {
           </div>
           <div className="text-left text-md md:text-xl mt-2 md:mt-5">
             <p>
-              Type:&nbsp;
+              {t('itemTypeLabel')}
               {location.type}
             </p>
             <p>
-              Dimension:&nbsp;
+              {t('itemDimensionLabel')}
               {location.dimension}
             </p>
           </div>

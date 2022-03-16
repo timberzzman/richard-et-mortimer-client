@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link, useParams } from 'react-router-dom';
 import { getCompleteEpisode } from '../services/EpisodeService';
 import { addFavorite, deleteFavorite, isFavorite } from '../services/favoritesService';
 
 function Episode() {
   const params = useParams();
+  const [t] = useTranslation();
   const [episode, setEpisode] = useState({});
   const [favorite, setFavorite] = useState(false);
 
@@ -27,7 +29,7 @@ function Episode() {
             <p className="pl-3 text-xl">{character.name}</p>
           </div>
           <div className="my-5 lg:my-0 text-center">
-            <Link to={`/character/${character.id}`} className="bg-blue-600 py-2 px-3 rounded mx-auto">Read more</Link>
+            <Link to={`/character/${character.id}`} className="bg-blue-600 py-2 px-3 rounded mx-auto">{t('readMoreButton')}</Link>
           </div>
         </div>
       ))
@@ -37,18 +39,18 @@ function Episode() {
   if (Object.keys(episode).length) {
     return (
       <section className="text-black dark:text-white text-left">
-        <h1 className="md:w-3/4 pl-5 md:pl-0 md:mx-auto text-2xl md:text-6xl italic my-2 md:my-5">Main info</h1>
+        <h1 className="md:w-3/4 pl-5 md:pl-0 md:mx-auto text-2xl md:text-6xl italic my-2 md:my-5">{t('mainInfoText')}</h1>
         <div className="mt-3 md:mx-auto mx-4 mb-3 md:w-1/2 border dark:border-gray-800 border dark:border-gray-800 rounded shadow-sm bg-gray-200 dark:bg-gray-800">
           <div className="text-center">
             <h1 className="text-2xl md:text-6xl">{episode.name}</h1>
           </div>
           <div className="text-left md:text-lg p-4">
             <div className="mb-2">
-              <h2 className="text-lg md:text-3xl font-bold">Episode</h2>
+              <h2 className="text-lg md:text-3xl font-bold">{t('episode')}</h2>
               <p className="italic">{episode.episode}</p>
             </div>
             <div className="mb-2">
-              <h2 className="text-lg md:text-3xl font-bold">Air date</h2>
+              <h2 className="text-lg md:text-3xl font-bold">{t('airDateLabel')}</h2>
               <p className="italic">{episode.air_date}</p>
             </div>
           </div>
@@ -62,11 +64,11 @@ function Episode() {
                 setFavorite(!favorite);
               }}
             >
-              { favorite ? 'Delete from favorites' : 'Add to favorites' }
+              { favorite ? t('deleteFavoriteButton') : t('addFavoriteButton') }
             </button>
           </div>
         </div>
-        <h1 className="md:w-3/4 pl-5 md:pl-0 md:mx-auto text-2xl md:text-6xl italic my-2 md:my-5">Characters in episode</h1>
+        <h1 className="md:w-3/4 pl-5 md:pl-0 md:mx-auto text-2xl md:text-6xl italic my-2 md:my-5">{}</h1>
         <div className="md:w-1/2 mx-4 my-5 md:mx-auto border shadow-md rounded">
           {episode.characters && episodeCharacters()}
         </div>
@@ -76,7 +78,7 @@ function Episode() {
   return (
     <section className="text-black dark:text-white w-full flex justify-center items-center">
       <div className="mt-52">
-        <p className="mb-5 text-6xl">Episode is loading...</p>
+        <p className="mb-5 text-6xl">{`${t('episode')} ${t('isLoading')}`}</p>
       </div>
     </section>
   );

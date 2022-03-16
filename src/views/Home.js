@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import CharacterItem from '../components/Home/CharacterItem';
 import EpisodeItem from '../components/Home/EpisodeItem';
 import LocationItem from '../components/Home/LocationItem';
@@ -11,6 +12,7 @@ function Home() {
   const [currentCharacter, setCurrentCharacter] = useState(null);
   const [currentEpisode, setCurrentEpisode] = useState(null);
   const [currentLocation, setCurrentLocation] = useState(null);
+  const [t] = useTranslation();
 
   function getRandomInt(max) {
     return Math.floor(Math.random() * max + 1);
@@ -63,9 +65,9 @@ function Home() {
   return (
     <section>
       <div className="mt-3 mb-3">
-        <button type="button" className="text-md mx-3 text-black p-3 rounded-md bg-gray-200 dark:text-white dark:bg-gray-800" onClick={() => getRandomCharacter()}>Character</button>
-        <button type="button" className="text-md mx-3 text-black p-3 rounded-md bg-gray-200 dark:text-white dark:bg-gray-800" onClick={() => getRandomLocation()}>Location</button>
-        <button type="button" className="text-md mx-3 text-black p-3 rounded-md bg-gray-200 dark:text-white dark:bg-gray-800" onClick={() => getRandomEpisode()}>Episode</button>
+        <button type="button" className="text-md mx-3 text-black p-3 rounded-md bg-gray-200 dark:text-white dark:bg-gray-800" onClick={() => getRandomCharacter()}>{t('character')}</button>
+        <button type="button" className="text-md mx-3 text-black p-3 rounded-md bg-gray-200 dark:text-white dark:bg-gray-800" onClick={() => getRandomLocation()}>{t('location')}</button>
+        <button type="button" className="text-md mx-3 text-black p-3 rounded-md bg-gray-200 dark:text-white dark:bg-gray-800" onClick={() => getRandomEpisode()}>{t('episode')}</button>
       </div>
       <CharacterItem character={currentCharacter} />
       <LocationItem location={currentLocation} />

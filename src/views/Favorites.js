@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import CharacterItem from '../components/Home/CharacterItem';
 import EpisodeItem from '../components/Home/EpisodeItem';
@@ -9,6 +10,7 @@ import { deleteFavorite, getFavorites } from '../services/favoritesService';
 import { getLocationsByID } from '../services/LocationService';
 
 function Favorites() {
+  const [t] = useTranslation();
   const [favorites, setFavorites] = useState([]);
   const [characters, setCharacters] = useState([]);
   const [locations, setLocations] = useState([]);
@@ -55,6 +57,9 @@ function Favorites() {
     newFavorite = newFavorite.filter(
       (favorite) => favorite.id !== favoriteID || favorite.type !== favoriteType,
     );
+    if (!newFavorite.length) {
+      newFavorite = null;
+    }
     setFavorites(newFavorite);
   };
 
@@ -62,8 +67,8 @@ function Favorites() {
     return (
       <section className="text-black dark:text-white w-full flex justify-center items-center">
         <div className="mt-52">
-          <p className="mb-5">There is no favorites here. Go on the homepage and add some.</p>
-          <Link to="/" className="bg-blue-600 rounded py-2 px-3">Go to Homepage</Link>
+          <p className="mb-5">{t('noFavoriteMessage')}</p>
+          <Link to="/" className="bg-blue-600 rounded py-2 px-3">{t('goToHomeButton')}</Link>
         </div>
       </section>
     );

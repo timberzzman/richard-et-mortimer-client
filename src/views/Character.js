@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link, useParams } from 'react-router-dom';
 import { getCompleteCharacter } from '../services/characterService';
 import { addFavorite, deleteFavorite, isFavorite } from '../services/favoritesService';
 
 function Character() {
   const params = useParams();
+  const [t] = useTranslation();
   const [character, setCharacter] = useState({});
   const [favorite, setFavorite] = useState(false);
 
@@ -36,7 +38,7 @@ function Character() {
             <p>{episode.episode}</p>
           </div>
           <div>
-            <Link to={`/episode/${episode.id}`} className="bg-blue-600 py-2 px-3 rounded">Read more</Link>
+            <Link to={`/episode/${episode.id}`} className="bg-blue-600 py-2 px-3 rounded">{t('readMoreButton')}</Link>
           </div>
         </div>
       ))
@@ -46,7 +48,7 @@ function Character() {
   if (Object.keys(character).length) {
     return (
       <section className="text-black dark:text-white text-left">
-        <h1 className="md:w-3/4 pl-5 md:pl-0 md:mx-auto text-2xl md:text-6xl italic my-2 md:my-5">Main info</h1>
+        <h1 className="md:w-3/4 pl-5 md:pl-0 md:mx-auto text-2xl md:text-6xl italic my-2 md:my-5">{t('mainInfoText')}</h1>
         <div className="mt-3 md:mx-auto mx-4 mb-3 md:w-1/2 border dark:border-gray-800 border dark:border-gray-800 rounded shadow-sm bg-gray-200 dark:bg-gray-800">
           <img className="h-32 md:h-64 w-32 md:w-64 my-5 mx-auto rounded-full" src={character.image} alt={character.name} />
           <div className="text-center">
@@ -54,26 +56,26 @@ function Character() {
           </div>
           <div className="text-left md:text-lg p-4">
             <div className="mb-2">
-              <h2 className="text-lg md:text-3xl font-bold">Gender</h2>
+              <h2 className="text-lg md:text-3xl font-bold">{t('genderLabel')}</h2>
               <p className="italic">{character.gender}</p>
             </div>
             <div className="mb-2">
-              <h2 className="text-lg md:text-3xl font-bold">Status</h2>
+              <h2 className="text-lg md:text-3xl font-bold">{t('statusLabel')}</h2>
               <div className="flex">
                 {getStatusPill()}
                 <p className="italic">{character.status}</p>
               </div>
             </div>
             <div className="mb-2">
-              <h2 className="text-lg md:text-3xl font-bold">Species</h2>
+              <h2 className="text-lg md:text-3xl font-bold">{t('speciesLabel')}</h2>
               <p className="italic">{character.species}</p>
             </div>
             <div className="mb-2">
-              <h2 className="text-lg md:text-3xl font-bold">Type</h2>
+              <h2 className="text-lg md:text-3xl font-bold">{t('typeLabel')}</h2>
               <p className="italic">{character.type}</p>
             </div>
             <div className="mb-2">
-              <h2 className="text-lg md:text-3xl font-bold">Origin</h2>
+              <h2 className="text-lg md:text-3xl font-bold">{t('originLabel')}</h2>
               {
                 character.origin.name !== 'unknown'
                   ? <Link className="italic" to={`/location/${character.origin.id}`}>{character.origin.name}</Link>
@@ -81,7 +83,7 @@ function Character() {
               }
             </div>
             <div className="mb-2">
-              <h2 className="text-lg md:text-3xl font-bold">Current location</h2>
+              <h2 className="text-lg md:text-3xl font-bold">{t('locationLabel')}</h2>
               {
                 character.location.name !== 'unknown'
                   ? <Link className="italic" to={`/location/${character.location.id}`}>{character.location.name}</Link>
@@ -99,11 +101,11 @@ function Character() {
                 setFavorite(!favorite);
               }}
             >
-              { favorite ? 'Delete from favorites' : 'Add to favorites' }
+              { favorite ? t('deleteFavoriteButton') : t('addFavoriteButton') }
             </button>
           </div>
         </div>
-        <h1 className="md:w-3/4 pl-5 md:pl-0 md:mx-auto text-2xl md:text-6xl italic my-2 md:my-5">Seen in episodes</h1>
+        <h1 className="md:w-3/4 pl-5 md:pl-0 md:mx-auto text-2xl md:text-6xl italic my-2 md:my-5">{t('seenEpisodesText')}</h1>
         <div className="md:w-1/2 mx-4 my-5 md:mx-auto border shadow-md rounded">
           {character.episode && characterEpisodes()}
         </div>
@@ -113,7 +115,7 @@ function Character() {
   return (
     <section className="text-black dark:text-white w-full flex justify-center items-center">
       <div className="mt-52">
-        <p className="mb-5 text-6xl">Character is loading...</p>
+        <p className="mb-5 text-6xl">{`${t('character')} ${t('isLoading')}`}</p>
       </div>
     </section>
   );

@@ -1,10 +1,12 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { addFavorite, deleteFavorite, isFavorite } from '../../services/favoritesService';
 
 function EpisodeItem({ episode, deleteFavoriteFn }) {
   const navigate = useNavigate();
+  const [t] = useTranslation();
   const [favorite, setFavorite] = useState(false);
 
   useEffect(() => {
@@ -31,7 +33,7 @@ function EpisodeItem({ episode, deleteFavoriteFn }) {
               {episode.episode}
             </p>
             <p>
-              Air date:&nbsp;
+              {t('itemAirDateLabel')}
               {episode.air_date}
             </p>
           </div>
@@ -49,14 +51,14 @@ function EpisodeItem({ episode, deleteFavoriteFn }) {
                 setFavorite(!favorite);
               }}
             >
-              { favorite ? 'Delete from favorites' : 'Add to favorites' }
+              { favorite ? t('deleteFavoriteButton') : t('addFavoriteButton') }
             </button>
             <button
               type="button"
               onClick={() => navigate(`/episode/${episode.id}`)}
               className="ml-2 py-2 px-3 rounded text-white bg-blue-600"
             >
-              Read more
+              {t('readMoreButton')}
             </button>
           </div>
         </div>
