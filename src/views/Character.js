@@ -20,11 +20,11 @@ function Character() {
 
   function getStatusPill() {
     if (character.status === 'Alive') {
-      return (<div className="h-4 w-4 rounded-full bg-green-600 mr-2 mt-2" />);
+      return (<div className="h-4 w-4 rounded-full bg-green-600 mr-1 md:mr-2 mt-1 md:mt-2" />);
     } if (character.status === 'Dead') {
-      return (<div className="h-4 w-4 rounded-full bg-red-600 mr-2 mt-2" />);
+      return (<div className="h-4 w-4 rounded-full bg-red-600 mr-1 md:mr-2 mt-1 md:mt-2" />);
     }
-    return (<div className="h-4 w-4 rounded-full bg-gray-300 mr-2 mt-2" />);
+    return (<div className="h-4 w-4 rounded-full bg-gray-300 mr-1 md:mr-2 mt-1 md:mt-2" />);
   }
 
   function characterEpisodes() {
@@ -74,11 +74,19 @@ function Character() {
             </div>
             <div className="mb-2">
               <h2 className="text-lg md:text-3xl font-bold">Origin</h2>
-              <p>{character.origin.name}</p>
+              {
+                character.origin.name !== 'unknown'
+                  ? <Link className="italic" to={`/location/${character.origin.id}`}>{character.origin.name}</Link>
+                  : <p className="italic">{character.origin.name}</p>
+              }
             </div>
             <div className="mb-2">
               <h2 className="text-lg md:text-3xl font-bold">Current location</h2>
-              <p>{character.location.name}</p>
+              {
+                character.location.name !== 'unknown'
+                  ? <Link className="italic" to={`/location/${character.location.id}`}>{character.location.name}</Link>
+                  : <p className="italic">{character.location.name}</p>
+              }
             </div>
           </div>
           <div className="flex text-gray-700 text-md mt-3 justify-end p-4">
