@@ -23,7 +23,7 @@ function Location() {
   function locationResidents() {
     return (
       location.residents.map((resident, index) => (
-        <div key={resident.id} className={`${index % 2 !== 0 ? 'bg-gray-800' : 'bg-gray-700'} p-3 lg:flex lg:justify-between lg:items-center`}>
+        <div key={resident.id} className={`${index % 2 !== 0 ? 'bg-gray-500 dark:bg-gray-800' : 'bg-gray-400 dark:bg-gray-700'} p-3 lg:flex lg:justify-between lg:items-center`}>
           <div className="lg:flex items-center text-center">
             <img className="mx-auto lg:flex-none h-24 md:h-32 w-24 md:w-32 rounded-full" src={resident.image} alt={resident.name} />
             <p className="pl-3 text-xl">{resident.name}</p>

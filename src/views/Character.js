@@ -32,7 +32,7 @@ function Character() {
   function characterEpisodes() {
     return (
       character.episode.map((episode, index) => (
-        <div key={episode.id} className={`${index % 2 !== 0 ? 'bg-gray-800' : 'bg-gray-700'} p-5 flex justify-between items-center`}>
+        <div key={episode.id} className={`${index % 2 !== 0 ? 'bg-gray-500 dark:bg-gray-800' : 'bg-gray-400 dark:bg-gray-700'} p-3 lg:flex lg:justify-between lg:items-center`}>
           <div>
             <p>{episode.name}</p>
             <p>{episode.episode}</p>

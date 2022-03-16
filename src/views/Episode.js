@@ -33,7 +33,7 @@ function Episode() {
   function episodeCharacters() {
     return (
       episode.characters.map((character, index) => (
-        <div key={character.id} className={`${index % 2 !== 0 ? 'bg-gray-800' : 'bg-gray-700'} p-3 lg:flex lg:justify-between lg:items-center`}>
+        <div key={character.id} className={`${index % 2 !== 0 ? 'bg-gray-500 dark:bg-gray-800' : 'bg-gray-400 dark:bg-gray-700'} p-3 lg:flex lg:justify-between lg:items-center`}>
           <div className="lg:flex items-center text-center">
             <img className="mx-auto lg:flex-none h-24 md:h-32 w-24 md:w-32 rounded-full" src={character.image} alt={character.name} />
             <p className="pl-3 text-xl">{character.name}</p>
@@ -83,7 +83,7 @@ function Episode() {
             </button>
           </div>
         </div>
-        <h1 className="md:w-3/4 pl-5 md:pl-0 md:mx-auto text-2xl md:text-6xl italic my-2 md:my-5">{}</h1>
+        <h1 className="md:w-3/4 pl-5 md:pl-0 md:mx-auto text-2xl md:text-6xl italic my-2 md:my-5">{t('characterEpisodeText')}</h1>
         <div className="md:w-1/2 mx-4 my-5 md:mx-auto border shadow-md rounded">
           {episode.characters && episodeCharacters()}
         </div>
