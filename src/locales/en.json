@@ -25,6 +25,7 @@
   "originLabel": "Origin",
   "locationLabel": "Current location",
   "airDateLabel": "Air Date",
+  "overviewLabel": "Overview",
   "goToHomeButton": "Go to Home",
   "noFavoriteMessage": "There is no favorites here. Go on the homepage and add some."
 }

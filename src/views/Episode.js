@@ -3,16 +3,26 @@ import { useTranslation } from 'react-i18next';
 import { Link, useParams } from 'react-router-dom';
 import { getCompleteEpisode } from '../services/EpisodeService';
 import { addFavorite, deleteFavorite, isFavorite } from '../services/favoritesService';
+import getEpisodefromTMDB from '../services/TMDBService';
 
 function Episode() {
   const params = useParams();
   const [t] = useTranslation();
   const [episode, setEpisode] = useState({});
+  const [episodeDetails, setEpisodeDetails] = useState({});
   const [favorite, setFavorite] = useState(false);
+
+  // eslint-disable-next-line no-shadow
+  async function getEpisodeDetails(episodeValue) {
+    const [episodeSeason, episodeNumber] = episodeValue.match(/[0-9]{2}/g);
+    const result = await getEpisodefromTMDB(episodeSeason, episodeNumber);
+    setEpisodeDetails(result);
+  }
 
   useEffect(() => {
     const getEpisode = async () => {
       const fetchedEpisode = await getCompleteEpisode(params.id);
+      getEpisodeDetails(fetchedEpisode.episode);
       setEpisode(fetchedEpisode);
     };
 
@@ -52,6 +62,10 @@ function Episode() {
             <div className="mb-2">
               <h2 className="text-lg md:text-3xl font-bold">{t('airDateLabel')}</h2>
               <p className="italic">{episode.air_date}</p>
+            </div>
+            <div>
+              <h2 className="text-lg md:text-3xl font-bold">{t('overviewLabel')}</h2>
+              {episodeDetails && episodeDetails.overview}
             </div>
           </div>
           <div className="flex text-gray-700 text-md mt-3 justify-end p-4">
