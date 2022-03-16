@@ -43,7 +43,7 @@ function Router() {
           </React.Suspense>
             )}
       />
-      <Route path="*" element={BadRoute} />
+      <Route path="*" element={<BadRoute />} />
     </Routes>
   );
 }
