@@ -53,21 +53,21 @@ query getCompleteEpisode($id: ID!) {
 `;
 
 export async function getEpisodesCount() {
-  const data = await request('https://rickandmortyapi.com/graphql', countQuery);
+  const data = await request(process.env.REACT_APP_RM_API, countQuery);
   return data.episodes.info.count;
 }
 
 export async function getEpisodeByID(ids) {
-  const data = await request('https://rickandmortyapi.com/graphql', episodesByIdQuery, { ids });
+  const data = await request(process.env.REACT_APP_RM_API, episodesByIdQuery, { ids });
   return data.episodesByIds;
 }
 
 export async function getEpisode(id) {
-  const data = await request('https://rickandmortyapi.com/graphql', episodeQuery, { id });
+  const data = await request(process.env.REACT_APP_RM_API, episodeQuery, { id });
   return data.episode;
 }
 
 export async function getCompleteEpisode(id) {
-  const data = await request('https://rickandmortyapi.com/graphql', completeEpisodeQuery, { id });
+  const data = await request(process.env.REACT_APP_RM_API, completeEpisodeQuery, { id });
   return data.episode;
 }

@@ -68,21 +68,21 @@ query getCharacter($id: ID!){
 `;
 
 export async function getCharactersCount() {
-  const data = await request('https://rickandmortyapi.com/graphql', countQuery);
+  const data = await request(process.env.REACT_APP_RM_API, countQuery);
   return data.characters.info.count;
 }
 
 export async function getCharactersByID(ids) {
-  const data = await request('https://rickandmortyapi.com/graphql', charactersByIdQuery, { ids });
+  const data = await request(process.env.REACT_APP_RM_API, charactersByIdQuery, { ids });
   return data.charactersByIds;
 }
 
 export async function getCharacter(id) {
-  const data = await request('https://rickandmortyapi.com/graphql', characterQuery, { id });
+  const data = await request(process.env.REACT_APP_RM_API, characterQuery, { id });
   return data.character;
 }
 
 export async function getCompleteCharacter(id) {
-  const data = await request('https://rickandmortyapi.com/graphql', completeCharacterQuery, { id });
+  const data = await request(process.env.REACT_APP_RM_API, completeCharacterQuery, { id });
   return data.character;
 }

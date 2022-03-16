@@ -49,21 +49,21 @@ query getLocation($id: ID!){
 `;
 
 export async function getLocationsCount() {
-  const data = await request('https://rickandmortyapi.com/graphql', countQuery);
+  const data = await request(process.env.REACT_APP_RM_API, countQuery);
   return data.locations.info.count;
 }
 
 export async function getLocationsByID(ids) {
-  const data = await request('https://rickandmortyapi.com/graphql', locationsByIdQuery, { ids });
+  const data = await request(process.env.REACT_APP_RM_API, locationsByIdQuery, { ids });
   return data.locationsByIds;
 }
 
 export async function getLocation(id) {
-  const data = await request('https://rickandmortyapi.com/graphql', locationQuery, { id });
+  const data = await request(process.env.REACT_APP_RM_API, locationQuery, { id });
   return data.location;
 }
 
 export async function getCompleteLocation(id) {
-  const data = await request('https://rickandmortyapi.com/graphql', completeLocationQuery, { id });
+  const data = await request(process.env.REACT_APP_RM_API, completeLocationQuery, { id });
   return data.location;
 }

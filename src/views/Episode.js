@@ -51,6 +51,7 @@ function Episode() {
       <section className="text-black dark:text-white text-left">
         <h1 className="md:w-3/4 pl-5 md:pl-0 md:mx-auto text-2xl md:text-6xl italic my-2 md:my-5">{t('mainInfoText')}</h1>
         <div className="mt-3 md:mx-auto mx-4 mb-3 md:w-1/2 border dark:border-gray-800 border dark:border-gray-800 rounded shadow-sm bg-gray-200 dark:bg-gray-800">
+          <img src={`https://www.themoviedb.org/t/p/original/${episodeDetails.still_path}`} alt={`episode-${episode.id}`} />
           <div className="text-center">
             <h1 className="text-2xl md:text-6xl">{episode.name}</h1>
           </div>
