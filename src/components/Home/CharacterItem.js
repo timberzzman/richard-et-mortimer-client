@@ -31,7 +31,7 @@ function CharacterItem({ character, deleteFavoriteFn }) {
             <div className="text-center md:text-left mb-2 md:mb-5">
               <button
                 type="button"
-                onClick={() => navigate(`character/${character.id}`)}
+                onClick={() => navigate(`/character/${character.id}`)}
                 className="text-center font-semibold leading-tight text-2xl md:text-4xl"
               >
                 {character.name}
@@ -71,7 +71,7 @@ function CharacterItem({ character, deleteFavoriteFn }) {
             </button>
             <button
               type="button"
-              onClick={() => navigate(`character/${character.id}`)}
+              onClick={() => navigate(`/character/${character.id}`)}
               className="ml-2 py-2 px-3 rounded text-white bg-blue-600"
             >
               Read more
