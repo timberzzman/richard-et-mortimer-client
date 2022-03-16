@@ -46,38 +46,38 @@ function Character() {
   if (Object.keys(character).length) {
     return (
       <section className="text-black dark:text-white text-left">
-        <h1 className="w-3/4 mx-auto text-6xl italic">Main info</h1>
+        <h1 className="md:w-3/4 pl-5 md:pl-0 md:mx-auto text-2xl md:text-6xl italic my-2 md:my-5">Main info</h1>
         <div className="mt-3 md:mx-auto mx-4 mb-3 md:w-1/2 border dark:border-gray-800 border dark:border-gray-800 rounded shadow-sm bg-gray-200 dark:bg-gray-800">
-          <img className="h-64 w-64 my-5 mx-auto rounded-full" src={character.image} alt={character.name} />
+          <img className="h-32 md:h-64 w-32 md:w-64 my-5 mx-auto rounded-full" src={character.image} alt={character.name} />
           <div className="text-center">
-            <h1 className="text-6xl">{character.name}</h1>
+            <h1 className="text-2xl md:text-6xl">{character.name}</h1>
           </div>
-          <div className="text-left text-lg p-4">
+          <div className="text-left md:text-lg p-4">
             <div className="mb-2">
-              <h2 className="text-3xl font-bold">Gender</h2>
+              <h2 className="text-lg md:text-3xl font-bold">Gender</h2>
               <p>{character.gender}</p>
             </div>
             <div className="mb-2">
-              <h2 className="text-3xl font-bold">Status</h2>
+              <h2 className="text-lg md:text-3xl font-bold">Status</h2>
               <div className="flex">
                 {getStatusPill()}
                 <p>{character.status}</p>
               </div>
             </div>
             <div className="mb-2">
-              <h2 className="text-3xl font-bold">Species</h2>
+              <h2 className="text-lg md:text-3xl font-bold">Species</h2>
               <p>{character.species}</p>
             </div>
             <div className="mb-2">
-              <h2 className="text-3xl font-bold">Type</h2>
+              <h2 className="text-lg md:text-3xl font-bold">Type</h2>
               <p>{character.type}</p>
             </div>
             <div className="mb-2">
-              <h2 className="text-3xl font-bold">Origin</h2>
+              <h2 className="text-lg md:text-3xl font-bold">Origin</h2>
               <p>{character.origin.name}</p>
             </div>
             <div className="mb-2">
-              <h2 className="text-3xl font-bold">Current location</h2>
+              <h2 className="text-lg md:text-3xl font-bold">Current location</h2>
               <p>{character.location.name}</p>
             </div>
           </div>
@@ -95,8 +95,8 @@ function Character() {
             </button>
           </div>
         </div>
-        <h1 className="w-3/4 mx-auto text-6xl italic">Seen in episodes</h1>
-        <div className="md:w-1/2 my-5 mx-auto border shadow-md rounded">
+        <h1 className="md:w-3/4 pl-5 md:pl-0 md:mx-auto text-2xl md:text-6xl italic my-2 md:my-5">Seen in episodes</h1>
+        <div className="md:w-1/2 mx-4 my-5 md:mx-auto border shadow-md rounded">
           {character.episode && characterEpisodes()}
         </div>
       </section>
