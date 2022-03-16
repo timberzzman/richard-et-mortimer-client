@@ -45,11 +45,11 @@ function Location() {
           <div className="text-left md:text-lg p-4">
             <div className="mb-2">
               <h2 className="text-lg md:text-3xl font-bold">Type</h2>
-              <p>{location.type}</p>
+              <p className="italic">{location.type}</p>
             </div>
             <div className="mb-2">
               <h2 className="text-lg md:text-3xl font-bold">Dimension</h2>
-              <p>{location.dimension}</p>
+              <p className="italic">{location.dimension}</p>
             </div>
           </div>
           <div className="flex text-gray-700 text-md mt-3 justify-end p-4">
@@ -74,8 +74,10 @@ function Location() {
     );
   }
   return (
-    <section>
-      <p>Location is loading...</p>
+    <section className="text-black dark:text-white w-full flex justify-center items-center">
+      <div className="mt-52">
+        <p className="mb-5 text-6xl">Location is loading...</p>
+      </div>
     </section>
   );
 }

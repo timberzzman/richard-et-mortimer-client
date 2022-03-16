@@ -55,22 +55,22 @@ function Character() {
           <div className="text-left md:text-lg p-4">
             <div className="mb-2">
               <h2 className="text-lg md:text-3xl font-bold">Gender</h2>
-              <p>{character.gender}</p>
+              <p className="italic">{character.gender}</p>
             </div>
             <div className="mb-2">
               <h2 className="text-lg md:text-3xl font-bold">Status</h2>
               <div className="flex">
                 {getStatusPill()}
-                <p>{character.status}</p>
+                <p className="italic">{character.status}</p>
               </div>
             </div>
             <div className="mb-2">
               <h2 className="text-lg md:text-3xl font-bold">Species</h2>
-              <p>{character.species}</p>
+              <p className="italic">{character.species}</p>
             </div>
             <div className="mb-2">
               <h2 className="text-lg md:text-3xl font-bold">Type</h2>
-              <p>{character.type}</p>
+              <p className="italic">{character.type}</p>
             </div>
             <div className="mb-2">
               <h2 className="text-lg md:text-3xl font-bold">Origin</h2>
@@ -111,8 +111,10 @@ function Character() {
     );
   }
   return (
-    <section>
-      <p>Character is loading...</p>
+    <section className="text-black dark:text-white w-full flex justify-center items-center">
+      <div className="mt-52">
+        <p className="mb-5 text-6xl">Character is loading...</p>
+      </div>
     </section>
   );
 }

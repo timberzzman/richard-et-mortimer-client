@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { getCompleteEpisode } from '../services/EpisodeService';
 import { addFavorite, deleteFavorite, isFavorite } from '../services/favoritesService';
 
@@ -18,27 +18,66 @@ function Episode() {
     setFavorite(isFavorite('episode', params.id));
   }, []);
 
+  function episodeCharacters() {
+    return (
+      episode.characters.map((character, index) => (
+        <div key={character.id} className={`${index % 2 !== 0 ? 'bg-gray-800' : 'bg-gray-700'} p-3 lg:flex lg:justify-between lg:items-center`}>
+          <div className="lg:flex items-center text-center">
+            <img className="mx-auto lg:flex-none h-24 md:h-32 w-24 md:w-32 rounded-full" src={character.image} alt={character.name} />
+            <p className="pl-3 text-xl">{character.name}</p>
+          </div>
+          <div className="my-5 lg:my-0 text-center">
+            <Link to={`/character/${character.id}`} className="bg-blue-600 py-2 px-3 rounded mx-auto">Read more</Link>
+          </div>
+        </div>
+      ))
+    );
+  }
+
   if (Object.keys(episode).length) {
     return (
-      <section>
-        <p>{episode.name}</p>
-        <p>{episode.episode}</p>
-        <button
-          type="button"
-          onClick={() => {
-            if (!favorite) addFavorite('episode', params.id);
-            else deleteFavorite('episode', params.id);
-            setFavorite(!favorite);
-          }}
-        >
-          { favorite ? 'Delete from favorites' : 'Add to favorites' }
-        </button>
+      <section className="text-black dark:text-white text-left">
+        <h1 className="md:w-3/4 pl-5 md:pl-0 md:mx-auto text-2xl md:text-6xl italic my-2 md:my-5">Main info</h1>
+        <div className="mt-3 md:mx-auto mx-4 mb-3 md:w-1/2 border dark:border-gray-800 border dark:border-gray-800 rounded shadow-sm bg-gray-200 dark:bg-gray-800">
+          <div className="text-center">
+            <h1 className="text-2xl md:text-6xl">{episode.name}</h1>
+          </div>
+          <div className="text-left md:text-lg p-4">
+            <div className="mb-2">
+              <h2 className="text-lg md:text-3xl font-bold">Episode</h2>
+              <p className="italic">{episode.episode}</p>
+            </div>
+            <div className="mb-2">
+              <h2 className="text-lg md:text-3xl font-bold">Air date</h2>
+              <p className="italic">{episode.air_date}</p>
+            </div>
+          </div>
+          <div className="flex text-gray-700 text-md mt-3 justify-end p-4">
+            <button
+              className={favorite ? 'py-2 px-3 rounded text-white bg-red-500' : 'py-2 px-3 rounded text-white bg-green-500'}
+              type="button"
+              onClick={() => {
+                if (!favorite) addFavorite('episode', params.id);
+                else deleteFavorite('episode', params.id);
+                setFavorite(!favorite);
+              }}
+            >
+              { favorite ? 'Delete from favorites' : 'Add to favorites' }
+            </button>
+          </div>
+        </div>
+        <h1 className="md:w-3/4 pl-5 md:pl-0 md:mx-auto text-2xl md:text-6xl italic my-2 md:my-5">Characters in episode</h1>
+        <div className="md:w-1/2 mx-4 my-5 md:mx-auto border shadow-md rounded">
+          {episode.characters && episodeCharacters()}
+        </div>
       </section>
     );
   }
   return (
-    <section>
-      <p>Episode is loading...</p>
+    <section className="text-black dark:text-white w-full flex justify-center items-center">
+      <div className="mt-52">
+        <p className="mb-5 text-6xl">Episode is loading...</p>
+      </div>
     </section>
   );
 }
