@@ -41,8 +41,8 @@ function App() {
     <div className="App h-100">
       <darkModeContext.Provider value={darkModeValue}>
         <BrowserRouter>
-          <div>
-            <Navbar />
+          <Navbar />
+          <div className="container">
             <Router />
           </div>
         </BrowserRouter>

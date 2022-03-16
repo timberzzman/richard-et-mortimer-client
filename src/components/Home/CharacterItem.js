@@ -28,7 +28,7 @@ function CharacterItem({ character, deleteFavoriteFn }) {
         <div className="h-32 w-32 mt-3 md:mt-0 mx-auto md:h-64 md:w-64 flex-none bg-cover bg-no-repeat rounded-full md:rounded-none md:rounded-l overflow-hidden" style={{ backgroundImage: `url(${character.image})` }} />
         <div className="px-2 py-3 md:px-4 md:py-4 text-black dark:text-white w-full md:flex md:justify-between md:flex-col">
           <div className="text-left text-md">
-            <div className="text-center md:text-left">
+            <div className="text-center md:text-left mb-2 md:mb-5">
               <button
                 type="button"
                 onClick={() => navigate(`character/${character.id}`)}
@@ -37,7 +37,6 @@ function CharacterItem({ character, deleteFavoriteFn }) {
                 {character.name}
               </button>
             </div>
-            <hr className="border-gray-600 dark:border-gray-800 my-1 border-bottom-none" />
             <p>
               Gender:&nbsp;
               {character.gender}
@@ -54,7 +53,7 @@ function CharacterItem({ character, deleteFavoriteFn }) {
               {character.type}
             </p>
           </div>
-          <div className="w-full flex text-gray-700 text-md justify-end mt-2">
+          <div className="w-full flex text-gray-700 text-md justify-end mt-3">
             <button
               className={favorite ? 'py-2 px-3 rounded text-white bg-red-500' : 'py-2 px-3 rounded text-white bg-green-500'}
               type="button"

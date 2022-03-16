@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import CharacterItem from '../components/Home/CharacterItem';
 import EpisodeItem from '../components/Home/EpisodeItem';
 import LocationItem from '../components/Home/LocationItem';
@@ -59,9 +60,12 @@ function Favorites() {
 
   if (!favorites) {
     return (
-      <div>
-        <p>There is no favorites</p>
-      </div>
+      <section className="text-black dark:text-white w-full flex justify-center items-center">
+        <div className="mt-52">
+          <p className="mb-5">There is no favorites here. Go on the homepage and add some.</p>
+          <Link to="/" className="bg-blue-600 rounded py-2 px-3">Go to Homepage</Link>
+        </div>
+      </section>
     );
   }
   return (

@@ -61,8 +61,8 @@ function Home() {
   }, []);
 
   return (
-    <section className="container mt-3">
-      <div className="mb-3">
+    <section>
+      <div className="mt-3 mb-3">
         <button type="button" className="text-md mx-3 text-black p-3 rounded-md bg-gray-200 dark:text-white dark:bg-gray-800" onClick={() => getRandomCharacter()}>Character</button>
         <button type="button" className="text-md mx-3 text-black p-3 rounded-md bg-gray-200 dark:text-white dark:bg-gray-800" onClick={() => getRandomLocation()}>Location</button>
         <button type="button" className="text-md mx-3 text-black p-3 rounded-md bg-gray-200 dark:text-white dark:bg-gray-800" onClick={() => getRandomEpisode()}>Episode</button>

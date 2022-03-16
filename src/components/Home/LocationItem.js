@@ -9,7 +9,7 @@ function LocationItem({ location, deleteFavoriteFn }) {
 
   useEffect(() => {
     if (location) {
-      setFavorite(isFavorite('character', location.id));
+      setFavorite(isFavorite('location', location.id));
     }
   }, [location]);
 
@@ -26,8 +26,7 @@ function LocationItem({ location, deleteFavoriteFn }) {
               {location.name}
             </button>
           </div>
-          <div className="text-left text-md md:text-xl">
-            <hr className="border-gray-600 dark:border-gray-800 my-1 border-bottom-none" />
+          <div className="text-left text-md md:text-xl mt-2 md:mt-5">
             <p>
               Type:&nbsp;
               {location.type}
@@ -37,7 +36,7 @@ function LocationItem({ location, deleteFavoriteFn }) {
               {location.dimension}
             </p>
           </div>
-          <div className="flex text-gray-700 text-md mt-2 justify-end">
+          <div className="flex text-gray-700 text-md mt-3 justify-end">
             <button
               className={favorite ? 'py-2 px-3 rounded text-white bg-red-500' : 'py-2 px-3 rounded text-white bg-green-500'}
               type="button"
