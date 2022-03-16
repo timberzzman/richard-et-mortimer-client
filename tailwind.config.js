@@ -4,6 +4,9 @@ module.exports = {
     './public/index.html',
   ],
   theme: {
+    container: {
+      center: true,
+    },
     extend: {},
   },
   darkMode: 'class',

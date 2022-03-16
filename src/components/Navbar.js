@@ -11,7 +11,8 @@ function Navbar() {
     <nav className="relative w-full flex flex-wrap justify-between py-3 bg-gray-200 dark:bg-gray-800 text-black dark:text-white text-lg font-bold">
       <div className="pl-3">
         <NavLink to="/favorites">
-          Favorites
+          <span className="hidden md:block">Favorites</span>
+          <FontAwesomeIcon icon={solid('heart')} className="md:hidden text-red-700" />
         </NavLink>
       </div>
       <div>
