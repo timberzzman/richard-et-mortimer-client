@@ -6,7 +6,7 @@ I use the api and TMDB API because the API lacks on overview for Episodes.
 
 ## Features
 
-Some of the features :
+Some features :
  - Multiple navigations
  - Favorites in localStorage
  - Responsive design

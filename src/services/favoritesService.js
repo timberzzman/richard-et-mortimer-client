@@ -31,6 +31,5 @@ export function isFavorite(favoriteType, favoriteID) {
 }
 
 export function getFavorites() {
-  const favorites = JSON.parse(localStorage.getItem('favorites'));
-  return favorites;
+  return JSON.parse(localStorage.getItem('favorites'));
 }
