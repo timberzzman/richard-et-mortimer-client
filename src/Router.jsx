@@ -1,11 +1,12 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import BadRoute from './views/BadRoute';
-import Character from './views/Character';
-import Episode from './views/Episode';
-import Favorites from './views/Favorites';
-import Home from './views/Home';
-import Location from './views/Location';
+
+const BadRoute = React.lazy(() => import('./views/BadRoute'));
+const Character = React.lazy(() => import('./views/Character'));
+const Episode = React.lazy(() => import('./views/Episode'));
+const Favorites = React.lazy(() => import('./views/Favorites'));
+const Home = React.lazy(() => import('./views/Home'));
+const Location = React.lazy(() => import('./views/Location'));
 
 function Router() {
   return (
