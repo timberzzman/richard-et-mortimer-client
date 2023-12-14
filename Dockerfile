@@ -1,4 +1,9 @@
 FROM node:lts-alpine as build
+
+ARG VITE_RM_API
+ARG VITE_TMDB_API
+ARG VITE_TMDB_TOKEN
+
 WORKDIR /app
 COPY . /app
 RUN npm install
